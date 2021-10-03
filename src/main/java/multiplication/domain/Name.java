@@ -3,7 +3,7 @@ package multiplication.domain;
 import java.util.Objects;
 
 public class Name {
-	private static final String NULL_ERROR_MESSAGE = "null은 입력할수 없습니다.";
+	private static final String NULL_ERROR_MESSAGE = "null 값은 입력할수 없습니다.";
 	private static final String LENGTH_ERROR_MESSAGE = "이름은 1이상 5이하 길이만 입력할수 있습니다.";
 	private static final String EMPTY_ERROR_MESSAGE = "공백은 입력할수 없습니다.";
 	private static final String LANGUAGE_ERROR_MESSAGE = "이름은 영어만 입력가능합니다.";
