@@ -24,13 +24,6 @@ public class NumberTest {
 	}
 
 	@Test
-	@DisplayName("구구단 범위 생성")
-	public void createRange() {
-		Number number = new Number(5);
-		assertThat(number).isEqualTo(new Number(5));
-	}
-
-	@Test
 	@DisplayName("아라비아 숫자 검증")
 	public void checkNumberType() {
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
@@ -38,16 +31,6 @@ public class NumberTest {
 
 			fail("숫자 에러가 발생해야한다.");
 		});
-	}
-
-	@Test
-	@DisplayName("구구단 계산")
-	public void createMultiplyCalculate() {
-		Number number = new Number(2);
-		Number range = new Number(5);
-		int result = Calculation.calculateValue("*", number.getNumber(), range.getNumber());
-
-		assertThat(result).isEqualTo(10);
 	}
 
 	private void checkInputNumberType(String number) {
