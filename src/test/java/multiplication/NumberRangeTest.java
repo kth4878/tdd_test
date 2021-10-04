@@ -33,16 +33,6 @@ public class NumberRangeTest {
 		});
 	}
 
-	@Test
-	@DisplayName("구구단 계산")
-	public void createMultiplyCalculate() {
-		Number number = new Number(2);
-		Number range = new Number(5);
-		int result = Calculation.calculateValue("*", number.getNumber(), range.getNumber());
-
-		assertThat(result).isEqualTo(10);
-	}
-
 	private void checkInputNumberType(String number) {
 		boolean checkNumber = !Pattern.matches("^[0-9]*$", number);
 		if (checkNumber) {
