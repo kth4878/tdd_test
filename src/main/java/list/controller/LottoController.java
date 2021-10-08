@@ -3,7 +3,6 @@ package list.controller;
 import java.util.Map;
 
 import list.domain.Lotto;
-import list.domain.LottoCount;
 import list.domain.LottoBundle;
 import list.domain.Money;
 import list.service.LottoService;
@@ -15,7 +14,7 @@ public class LottoController {
 		InputView.title();
 
 		Money money = new Money(InputView.inputMoney());
-		LottoCount lottoCount = new LottoCount(money);
+		int lottoCount = LottoService.lottoCount(money);
 
 		OutputView.buyLotto(lottoCount);
 
