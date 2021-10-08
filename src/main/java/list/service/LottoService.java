@@ -11,7 +11,6 @@ import java.util.Set;
 import list.calculator.Calculation;
 import list.calculator.LottoPrize;
 import list.domain.Lotto;
-import list.domain.LottoCount;
 import list.domain.LottoBundle;
 import list.domain.Money;
 import list.domain.RandomNumber;
@@ -19,10 +18,15 @@ import list.domain.RandomNumber;
 public class LottoService {
 	private static final int MIN_WINNING_NUMBER = 3;
 	private static final int MAX_WINNING_NUMBER = 6;
+	private static final int MIN_MONEY = 1000;
 
-	public static LottoBundle lottoRandom(LottoCount lottoCount) {
+	public static int lottoCount(Money money) {
+		return money.getMoney() / MIN_MONEY;
+	}
+
+	public static LottoBundle lottoRandom(int lottoCount) {
 		List<Lotto> lottoBundle = new ArrayList<>();
-		for (int i = 0; i < lottoCount.getCount(); i++) {
+		for (int i = 0; i < lottoCount; i++) {
 			lottoBundle.add(randomLottoSetting());
 		}
 		return new LottoBundle(lottoBundle);
@@ -36,14 +40,14 @@ public class LottoService {
 		List<Integer> numbers = winningLotto(lottos, winningNumber);
 
 		Map<Integer, Integer> map = new HashMap<>();
-		for(int i = MIN_WINNING_NUMBER; i<= MAX_WINNING_NUMBER; i++){
+		for (int i = MIN_WINNING_NUMBER; i <= MAX_WINNING_NUMBER; i++) {
 			map.put(i, Collections.frequency(numbers, i));
 		}
 
 		return map;
 	}
 
-	private static List<Integer> winningLotto(LottoBundle lottos, Lotto winningNumber){
+	private static List<Integer> winningLotto(LottoBundle lottos, Lotto winningNumber) {
 		List<Integer> numbers = new ArrayList<>();
 		for (int i = 0; i < lottos.findSize(); i++) {
 			numbers.add(winningNumber.matchCount(lottos.findLotto(i)));
@@ -56,7 +60,7 @@ public class LottoService {
 		for (int key : map.keySet()) {
 			money += LottoPrize.winningAmount(key, map.get(key));
 		}
-		return Math.round(Calculation.calculate("/",money, seedMoney.getMoney()) * 100) / 100.0;
+		return Math.round(Calculation.calculate("/", money, seedMoney.getMoney()) * 100) / 100.0;
 	}
 
 	private static Lotto randomLottoSetting() {
