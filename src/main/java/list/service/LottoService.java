@@ -12,21 +12,17 @@ import list.calculator.Calculation;
 import list.calculator.LottoPrize;
 import list.domain.Lotto;
 import list.domain.LottoBundle;
+import list.domain.LottoCount;
 import list.domain.Money;
 import list.domain.RandomNumber;
 
 public class LottoService {
 	private static final int MIN_WINNING_NUMBER = 3;
 	private static final int MAX_WINNING_NUMBER = 6;
-	private static final int MIN_MONEY = 1000;
 
-	public static int lottoCount(Money money) {
-		return Calculation.calculate("/", money.getMoney(), MIN_MONEY);
-	}
-
-	public static LottoBundle lottoRandom(int lottoCount) {
+	public static LottoBundle lottoRandom(LottoCount lottoCount) {
 		List<Lotto> lottoBundle = new ArrayList<>();
-		for (int i = 0; i < lottoCount; i++) {
+		for (int i = 0; i < lottoCount.getLottoCount(); i++) {
 			lottoBundle.add(randomLottoSetting());
 		}
 		return new LottoBundle(lottoBundle);
@@ -36,8 +32,8 @@ public class LottoService {
 		return randomLottoSetting();
 	}
 
-	public static Map<Integer, Integer> winning(LottoBundle lottos, Lotto winningNumber) {
-		List<Integer> numbers = winningLotto(lottos, winningNumber);
+	public static Map<Integer, Integer> winning(LottoBundle lottoBundle, Lotto winningNumber) {
+		List<Integer> numbers = winningLotto(lottoBundle, winningNumber);
 
 		Map<Integer, Integer> map = new HashMap<>();
 		for (int i = MIN_WINNING_NUMBER; i <= MAX_WINNING_NUMBER; i++) {
@@ -47,10 +43,10 @@ public class LottoService {
 		return map;
 	}
 
-	private static List<Integer> winningLotto(LottoBundle lottos, Lotto winningNumber) {
+	private static List<Integer> winningLotto(LottoBundle lottoBundle, Lotto winningNumber) {
 		List<Integer> numbers = new ArrayList<>();
-		for (int i = 0; i < lottos.findSize(); i++) {
-			numbers.add(winningNumber.matchCount(lottos.findLotto(i)));
+		for (int i = 0; i < lottoBundle.findSize(); i++) {
+			numbers.add(winningNumber.matchCount(lottoBundle.findLotto(i)));
 		}
 		return numbers;
 	}
