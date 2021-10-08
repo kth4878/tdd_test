@@ -21,7 +21,7 @@ public class LottoService {
 	private static final int MIN_MONEY = 1000;
 
 	public static int lottoCount(Money money) {
-		return money.getMoney() / MIN_MONEY;
+		return Calculation.calculate("/", money.getMoney(), MIN_MONEY);
 	}
 
 	public static LottoBundle lottoRandom(int lottoCount) {
@@ -56,7 +56,7 @@ public class LottoService {
 	}
 
 	public static double revenue(Money seedMoney, Map<Integer, Integer> map) {
-		double money = 0;
+		int money = 0;
 		for (int key : map.keySet()) {
 			money += LottoPrize.winningAmount(key, map.get(key));
 		}
