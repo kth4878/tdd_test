@@ -9,13 +9,6 @@ import org.junit.jupiter.api.Test;
 public class LottoTest {
 
 	@Test
-	@DisplayName("게임별 번호 생성")
-	public void createGameByNumber() {
-		Lotto lotto = Lotto.ofInt(2, 6, 7, 10, 22, 10);
-		assertThat(lotto).isEqualTo(Lotto.ofInt(2, 6, 7, 10, 22, 10));
-	}
-
-	@Test
 	@DisplayName("게임 번호 중복 체크")
 	public void checkNumberOverlap() {
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
