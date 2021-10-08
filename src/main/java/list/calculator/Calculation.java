@@ -15,14 +15,14 @@ public enum Calculation {
 	public static final String OPERATOR_ERROR_MESSAGE = "올바른 연산자가 아닙니다.";
 	public static final String DIVIDE_ERROR_MESSAGE = "0으로 나눗셈은 불가능 합니다.";
 	private String operator;
-	private BiFunction<Double, Double, Double> calculateValue;
+	private BiFunction<Integer, Integer, Integer> calculateValue;
 
-	Calculation(String operator, BiFunction<Double, Double, Double> calculateValue) {
+	Calculation(String operator, BiFunction<Integer, Integer, Integer> calculateValue) {
 		this.operator = operator;
 		this.calculateValue = calculateValue;
 	}
 
-	public static double calculate(String operator, double firstValue, double lastValue) {
+	public static int calculate(String operator, int firstValue, int lastValue) {
 		return getOperator(operator).calculateValue.apply(firstValue, lastValue);
 	}
 
@@ -33,7 +33,7 @@ public enum Calculation {
 			.orElseThrow(() -> new IllegalArgumentException(OPERATOR_ERROR_MESSAGE));
 	}
 
-	private static void validToDivideByZero(Double lastValue) {
+	private static void validToDivideByZero(Integer lastValue) {
 		if (lastValue == 0) {
 			throw new IllegalArgumentException(DIVIDE_ERROR_MESSAGE);
 		}
