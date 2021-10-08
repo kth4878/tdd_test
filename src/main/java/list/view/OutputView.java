@@ -4,13 +4,14 @@ import java.util.Map;
 
 import list.domain.Lotto;
 import list.domain.LottoBundle;
+import list.domain.LottoCount;
 
 public class OutputView {
 
 	private static final String BUY_LOTTO_MESSAGE = "개를 구매했습니다.";
 
-	public static void buyLotto(int lottoCount) {
-		System.out.println(lottoCount + BUY_LOTTO_MESSAGE);
+	public static void buyLotto(LottoCount lottoCount) {
+		System.out.println(lottoCount.getLottoCount() + BUY_LOTTO_MESSAGE);
 	}
 
 	public static void resultGameNumber(LottoBundle lottoBundle) {
