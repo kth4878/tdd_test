@@ -1,6 +1,7 @@
 package list.domain;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -14,13 +15,27 @@ public class Lotto {
 	}
 
 	public static Lotto ofInt(Integer... numbers) {
-		Set<LottoNumber> lottoNumbers = new HashSet<>();
-
-		for (int number : numbers) {
-			lottoNumbers.add(new LottoNumber(number));
+		Set<Integer> lottoNumbers = new HashSet<>();
+		for( int number : numbers){
+			lottoNumbers.add(number);
 		}
+		checkOverlap(lottoNumbers);
 
-		return new Lotto(checkOverlap(lottoNumbers));
+		return new Lotto(setLotto(lottoNumbers));
+	}
+
+	private static void checkOverlap(Set<Integer> lotto) {
+		if (lotto.size() < GAME_MAX_NUMBER) {
+			throw new IllegalArgumentException(OVERLAP_ERROR_MESSAGE);
+		}
+	}
+
+	private static Set<LottoNumber> setLotto(Set<Integer> lottoNumbers){
+		Set<LottoNumber> lotto = new HashSet<>();
+		for (int number : lottoNumbers) {
+			lotto.add(new  LottoNumber(number));
+		}
+		return lotto;
 	}
 
 	public int matchCount(Lotto targetLotto) {
@@ -47,14 +62,22 @@ public class Lotto {
 			.collect(Collectors.joining(", "));
 	}
 
-	private static Set<LottoNumber> checkOverlap(Set<LottoNumber> lotto) {
-		if (lotto.size() < GAME_MAX_NUMBER) {
-			throw new IllegalArgumentException(OVERLAP_ERROR_MESSAGE);
-		}
+	public Set<LottoNumber> getLotto() {
 		return lotto;
 	}
 
-	public Set<LottoNumber> getLotto() {
-		return lotto;
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Lotto lotto1 = (Lotto)o;
+		return Objects.equals(lotto, lotto1.lotto);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(lotto);
 	}
 }
