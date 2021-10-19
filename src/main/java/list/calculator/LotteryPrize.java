@@ -3,7 +3,7 @@ package list.calculator;
 import java.util.Arrays;
 import java.util.function.UnaryOperator;
 
-public enum LottoPrize {
+public enum LotteryPrize {
 	THREE(3, (a) -> a * 5000),
 	FOUR(4, (a) -> a * 50000),
 	FIVE(5, (a) -> a * 1500000),
@@ -13,7 +13,7 @@ public enum LottoPrize {
 	private int winningNumber;
 	private UnaryOperator<Integer> winningCount;
 
-	LottoPrize(int rank, UnaryOperator<Integer> winningCount) {
+	LotteryPrize(int rank, UnaryOperator<Integer> winningCount) {
 		this.winningNumber = rank;
 		this.winningCount = winningCount;
 	}
@@ -22,7 +22,7 @@ public enum LottoPrize {
 		return getRank(winningNumber).winningCount.apply(winningCount);
 	}
 
-	private static LottoPrize getRank(int winningNumber) {
+	private static LotteryPrize getRank(int winningNumber) {
 		return Arrays.stream(values())
 			.filter(o -> o.winningNumber == winningNumber)
 			.findFirst()
