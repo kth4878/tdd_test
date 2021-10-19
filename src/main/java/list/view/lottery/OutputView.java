@@ -1,6 +1,6 @@
 package list.view.lottery;
 
-import list.calculator.LotteryPrize;
+import list.domain.lottery.LotteryPrize;
 import list.domain.lottery.LotteryRanking;
 import list.domain.lottery.LotteryTicketCount;
 import list.domain.lottery.LotteryTickets;

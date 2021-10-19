@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 import list.calculator.Calculation;
-import list.calculator.LotteryPrize;
+import list.domain.lottery.LotteryPrize;
 import list.domain.lottery.LotteryRandomNumber;
 import list.domain.lottery.LotteryRanking;
 import list.domain.lottery.LotteryStore;
