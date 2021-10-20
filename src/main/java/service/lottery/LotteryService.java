@@ -69,7 +69,6 @@ public class LotteryService {
 		LastWeekLotteryTicket lastWeekWinningNumber, BonusBall bonusBall) {
 
 		List<Integer> winningLottery = winningLottery(lotteryTickets, lastWeekWinningNumber, bonusBall);
-
 		Map<Integer, Integer> rankingCount = new HashMap<>();
 
 		for (int i = MIN_LANK; i <= MAX_LANK; i++) {
@@ -82,14 +81,13 @@ public class LotteryService {
 	private static List<Integer> winningLottery(LotteryTickets lotteryTickets,
 		LastWeekLotteryTicket lastWeekWinningNumber, BonusBall bonusBall) {
 		List<Integer> numbers = new ArrayList<>();
-		int winningNumber = 0;
+		int winningNumberCount;
+		int bonusBallCount;
 		for (int i = 0; i < lotteryTickets.size(); i++) {
-			winningNumber = lastWeekWinningNumber.lotteryMatchCount(lotteryTickets.getLotteryTickets(i));
-			numbers.add(
-				LotteryRankCalculation.ranking(winningNumber,
-					bonusBall.BonusBallMatch(winningNumber, lotteryTickets.getLotteryTickets(i))
-				)
-			);
+			winningNumberCount = lastWeekWinningNumber.lotteryMatchCount(lotteryTickets.getLotteryTickets(i));
+			bonusBallCount = bonusBall.BonusBallMatch(winningNumberCount, lotteryTickets.getLotteryTickets(i));
+
+			numbers.add(LotteryRankCalculation.ranking(winningNumberCount, bonusBallCount));
 		}
 
 		return numbers;
