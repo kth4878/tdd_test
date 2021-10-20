@@ -1,4 +1,4 @@
-package list.domain.lottery;
+package domain.lottery;
 
 import static org.assertj.core.api.Assertions.*;
 

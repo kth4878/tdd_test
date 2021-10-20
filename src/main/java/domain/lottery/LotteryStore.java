@@ -1,6 +1,4 @@
-package list.domain.lottery;
-
-import list.calculator.Calculation;
+package domain.lottery;
 
 public class LotteryStore {
 	private static final int LOTTERY_PRICE = 1000;

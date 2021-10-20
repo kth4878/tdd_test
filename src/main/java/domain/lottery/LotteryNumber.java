@@ -1,4 +1,4 @@
-package list.domain.lottery;
+package domain.lottery;
 
 public class LotteryNumber {
 	private static final String NUMBER_ERROR_MESSAGE = "error : 입력가능한 숫자가 아닙니다.";

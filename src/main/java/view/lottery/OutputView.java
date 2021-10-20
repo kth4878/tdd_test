@@ -1,9 +1,9 @@
-package list.view.lottery;
+package view.lottery;
 
-import list.domain.lottery.LotteryPrize;
-import list.domain.lottery.LotteryRanking;
-import list.domain.lottery.LotteryTicketCount;
-import list.domain.lottery.LotteryTickets;
+import domain.lottery.LotteryPrize;
+import domain.lottery.LotteryRank;
+import domain.lottery.LotteryTicketCount;
+import domain.lottery.LotteryTickets;
 
 public class OutputView {
 
@@ -11,7 +11,7 @@ public class OutputView {
 	private static final String LOTTERY_TICKET_NUMBER_MESSAGE = "[%s]%n";
 	private static final String WINNING_COUNT_LIST_MESSAGE = "당첨 통계";
 	private static final String LINE_MESSAGE = "--------------------";
-	private static final String LOTTERY_PRIZE_MESSAGE = "%d개 일치 (%d) - %d %n";
+	private static final String LOTTERY_PRIZE_MESSAGE = "%d등 (%d) - %d %n";
 	private static final String REVENUE_MESSAGE = "총 수익률은 %.2f 입니다. (금액 대비 기준은 1 입니다.)";
 
 	public static void buyLotteryTicket(LotteryTicketCount lotteryTicketCount) {
@@ -25,13 +25,13 @@ public class OutputView {
 		}
 	}
 
-	public static void resultWinning(LotteryRanking lotteryRanking) {
+	public static void resultWinning(LotteryRank lotteryRank) {
 		System.out.println("");
 		System.out.println(WINNING_COUNT_LIST_MESSAGE);
 		System.out.println(LINE_MESSAGE);
-		for (int key : lotteryRanking.keySet()) {
+		for (int key : lotteryRank.keySet()) {
 			System.out.printf(LOTTERY_PRIZE_MESSAGE, key, LotteryPrize.winningAmount(key, 1),
-				lotteryRanking.countWinningNumber(key));
+				lotteryRank.countWinningNumber(key));
 		}
 	}
 

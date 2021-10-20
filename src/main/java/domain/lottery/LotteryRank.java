@@ -1,13 +1,13 @@
-package list.domain.lottery;
+package domain.lottery;
 
 import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 
-public class LotteryRanking {
+public class LotteryRank {
 	private final Map<Integer, Integer> rankingCount;
 
-	public LotteryRanking(Map<Integer, Integer> rankingCount) {
+	public LotteryRank(Map<Integer, Integer> rankingCount) {
 		this.rankingCount = Collections.unmodifiableMap(rankingCount);
 	}
 
@@ -18,4 +18,6 @@ public class LotteryRanking {
 	public Set<Integer> keySet() {
 		return this.rankingCount.keySet();
 	}
+
+
 }

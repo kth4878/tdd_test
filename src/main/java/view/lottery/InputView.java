@@ -1,11 +1,11 @@
-package list.view.lottery;
+package view.lottery;
 
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import list.domain.lottery.LotteryTicketCount;
+import domain.lottery.LotteryTicketCount;
 
 public class InputView {
 
@@ -17,6 +17,7 @@ public class InputView {
 	private static final String INPUT_TYPE_ERROR_MESSAGE = "error : 아라비아 숫자만 입력 가능합니다.";
 	private static final String LOTTERY_LENGTH_ERROR_MESSAGE = "error : 로또 번호는 6개 입력해야 합니다.";
 	private static final String LAST_WEEK_WINNING_NUMBER_MESSAGE = "지난 주 당첨 번호를 입력하세요. (,으로 구분)";
+	private static final String BONUS_BALL_MESSAGE = "보너스 볼을 입력해주세요.";
 	private static final String COMMA = ",";
 	private static final int ZERO = 0;
 
@@ -50,7 +51,14 @@ public class InputView {
 
 	public static List<String[]> inputLastWeekLotteryNumbers() {
 		System.out.println(LAST_WEEK_WINNING_NUMBER_MESSAGE);
+
 		return inputLotteryNumber(1);
+	}
+
+	public static int inputBonusBall() {
+		System.out.println(BONUS_BALL_MESSAGE);
+
+		return checkInputTypeNumber();
 	}
 
 	private static int checkInputTypeNumber() {

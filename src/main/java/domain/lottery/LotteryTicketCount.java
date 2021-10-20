@@ -1,6 +1,4 @@
-package list.domain.lottery;
-
-import list.calculator.Calculation;
+package domain.lottery;
 
 public class LotteryTicketCount {
 	private static final String MANUAL_LOTTERY_ERROR_MESSAGE = "error : 구매한 복권개수보다 입력된 복권 개수가 많습니다.";

@@ -1,6 +1,4 @@
-package list;
-
-import list.controller.lottery.LotteryController;
+import controller.lottery.LotteryController;
 
 public class LotteryApplication {
 	public static void main(String[] args) {
