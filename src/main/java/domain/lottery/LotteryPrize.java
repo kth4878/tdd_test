@@ -1,4 +1,4 @@
-package list.domain.lottery;
+package domain.lottery;
 
 import java.util.Arrays;
 import java.util.function.UnaryOperator;
