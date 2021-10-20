@@ -11,13 +11,12 @@ public class LotteryRank {
 		this.rankingCount = Collections.unmodifiableMap(rankingCount);
 	}
 
-	public int countWinningNumber(int number){
+	public int countWinningNumber(int number) {
 		return rankingCount.get(number);
 	}
 
 	public Set<Integer> keySet() {
 		return this.rankingCount.keySet();
 	}
-
 
 }
