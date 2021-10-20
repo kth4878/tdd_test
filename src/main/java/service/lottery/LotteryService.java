@@ -1,4 +1,4 @@
-package list.service.lottery;
+package service.lottery;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,18 +10,18 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import list.calculator.Calculation;
-import list.domain.lottery.BonusBall;
-import list.domain.lottery.LastWeekLotteryTicket;
-import list.domain.lottery.LotteryNumber;
-import list.domain.lottery.LotteryPrize;
-import list.domain.lottery.LotteryRandomNumber;
-import list.domain.lottery.LotteryRank;
-import list.domain.lottery.LotteryRankCalculation;
-import list.domain.lottery.LotteryStore;
-import list.domain.lottery.LotteryTicket;
-import list.domain.lottery.LotteryTicketCount;
-import list.domain.lottery.LotteryTickets;
+import domain.lottery.BonusBall;
+import domain.lottery.Calculation;
+import domain.lottery.LastWeekLotteryTicket;
+import domain.lottery.LotteryNumber;
+import domain.lottery.LotteryPrize;
+import domain.lottery.LotteryRandomNumber;
+import domain.lottery.LotteryRank;
+import domain.lottery.LotteryRankCalculation;
+import domain.lottery.LotteryStore;
+import domain.lottery.LotteryTicket;
+import domain.lottery.LotteryTicketCount;
+import domain.lottery.LotteryTickets;
 
 public class LotteryService {
 	private static final int ZERO = 0;
@@ -82,11 +82,12 @@ public class LotteryService {
 	private static List<Integer> winningLottery(LotteryTickets lotteryTickets,
 		LastWeekLotteryTicket lastWeekWinningNumber, BonusBall bonusBall) {
 		List<Integer> numbers = new ArrayList<>();
+		int winningNumber = 0;
 		for (int i = 0; i < lotteryTickets.size(); i++) {
+			winningNumber = lastWeekWinningNumber.lotteryMatchCount(lotteryTickets.getLotteryTickets(i));
 			numbers.add(
-				LotteryRankCalculation.ranking(
-					lastWeekWinningNumber.lotteryMatchCount(lotteryTickets.getLotteryTickets(i)), 0
-					/*bonusBall.BonusBallMatch(lotteryTickets.getLotteryTickets(i))*/
+				LotteryRankCalculation.ranking(winningNumber,
+					bonusBall.BonusBallMatch(winningNumber, lotteryTickets.getLotteryTickets(i))
 				)
 			);
 		}
