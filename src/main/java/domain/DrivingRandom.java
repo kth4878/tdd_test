@@ -8,18 +8,18 @@ public class DrivingRandom {
 	private static final String EMPTY = "";
 	private static final int VALID_NUMBER = 2;
 
-	public DrivingRandom(){
+	public DrivingRandom() {
 	}
 
-	public static String driving(){
+	public static String driving() {
 		int number = random();
-		if(number == 0){
+		if (number == 0) {
 			return EMPTY;
 		}
 		return HYPHEN;
 	}
 
-	private static int random(){
+	private static int random() {
 		return random.nextInt(VALID_NUMBER);
 	}
 }
