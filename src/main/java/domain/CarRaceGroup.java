@@ -31,14 +31,6 @@ public class CarRaceGroup {
 		return DrivingRandom.driving();
 	}
 
-	public String findCar(int number) {
-		return this.carRaceGroup.get(number).getCar();
-	}
-
-	public String findPosition(int number) {
-		return this.carRaceGroup.get(number).getPosition();
-	}
-
 	public int size() {
 		return this.carRaceGroup.size();
 	}
@@ -63,4 +55,7 @@ public class CarRaceGroup {
 			.orElseThrow(() -> new IllegalArgumentException(MAX_NUMBER_ERROR_MESSAGE));
 	}
 
+	public List<CarRace> getCarRaceGroup() {
+		return carRaceGroup;
+	}
 }
