@@ -1,6 +1,5 @@
 package domain;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -16,12 +15,9 @@ public class CarGroup {
 
 	private List<Car> carNameList(String car) {
 		String[] carArray = ofStringArray(car);
-
-		List<Car> carGroup = Arrays.stream(carArray)
+		return Arrays.stream(carArray)
 			.map(Car::new)
 			.collect(Collectors.toList());
-
-		return carGroup;
 	}
 
 	private String[] ofStringArray(String car) {
