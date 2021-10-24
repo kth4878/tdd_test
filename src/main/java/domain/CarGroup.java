@@ -1,8 +1,10 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarGroup {
 	private static final String COMMA = ",";
@@ -15,10 +17,9 @@ public class CarGroup {
 	private List<Car> carNameList(String car) {
 		String[] carArray = ofStringArray(car);
 
-		List<Car> carGroup = new ArrayList<>();
-		for (String carName : carArray) {
-			carGroup.add(new Car(carName));
-		}
+		List<Car> carGroup = Arrays.stream(carArray)
+			.map(Car::new)
+			.collect(Collectors.toList());
 
 		return carGroup;
 	}
