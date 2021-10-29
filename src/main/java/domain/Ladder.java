@@ -29,26 +29,14 @@ public class Ladder {
 		return this.ladder.get(number).findLadderLineNumber();
 	}
 
-	public String findLadderResult(String player, Players players, Prizes prizes){
-		int position = position(player, players);
+	public String findLadderResult(String playerName, Players players, Prizes prizes){
+		int position = players.findPosition(playerName);
 
 		for(int i=0; i<ladder.size(); i++){
 			position = ladder.get(i).moveLadderLine(position);
 		}
 
 		return prizes.findPrize(position);
-	}
-
-	private int position(String player, Players players){
-		int number = 0;
-		for(int i=0; i<players.size(); i++){
-			if(players.findPlayer(i) == player){
-				number = i;
-				break;
-			}
-		}
-
-		return number;
 	}
 
 }

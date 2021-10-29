@@ -62,31 +62,23 @@ public class LadderLine {
 	}
 
 	public int moveLadderLine(int position) {
-		int positionMax = ladderLine.size() - ONE;
 		int leftPosition = leftPosition(position);
-		int rightPosition = rightPosition(position, positionMax);
+		int rightPosition = rightPosition(position);
 
 		return movePosition(position, leftPosition, rightPosition);
 	}
 
 	private int leftPosition(int position) {
-		if (position == ZERO) {
-			return ZERO;
-		}
-
-		if (ladderLine.get(position - ONE) == ONE) {
+		if (position != ZERO && ladderLine.get(position - ONE) == ONE) {
 			return ONE;
 		}
 
 		return ZERO;
 	}
 
-	private int rightPosition(int position, int positionMax) {
-		if (position == positionMax) {
-			return ZERO;
-		}
-
-		if (ladderLine.get(position) == ONE) {
+	private int rightPosition(int position) {
+		int positionMax = ladderLine.size() - ONE;
+		if (position != positionMax && ladderLine.get(position) == ONE) {
 			return ONE;
 		}
 
