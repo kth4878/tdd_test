@@ -16,6 +16,7 @@ public class Players {
 	private static final String EMPTY_ERROR_MESSAGE = "error : 참가자는 공백을 입력할수 없습니다.";
 	private static final String PLAYER_COUNT_ERROR_MESSAGE = "error : 참가자는 최소 2명 이상입니다.";
 	private static final String PLAYER_ERROR_MESSAGE = "error : 해당 플레이어 는 없습니다.";
+	private static final String PLAYER_ALL = "all";
 
 	private final List<Player> players;
 
@@ -86,7 +87,7 @@ public class Players {
 	}
 
 	public String checkPlayer(String player){
-		if(player.equals("all")){
+		if(player.equals(PLAYER_ALL)){
 			return player;
 		}
 
@@ -98,4 +99,13 @@ public class Players {
 			.orElseThrow(() -> new IllegalArgumentException(PLAYER_ERROR_MESSAGE));
 	}
 
+	public int findPosition(String playerName){
+		for(int i=0; i<players.size(); i++){
+			if(players.get(i).getPlayer() == playerName){
+				return i;
+			}
+		}
+
+		return 0;
+	}
 }

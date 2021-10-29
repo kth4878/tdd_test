@@ -10,4 +10,5 @@ public class Player {
 	public String getPlayer() {
 		return player;
 	}
+
 }
